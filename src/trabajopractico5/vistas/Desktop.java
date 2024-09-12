@@ -4,12 +4,14 @@
  */
 package trabajopractico5.vistas;
 
+import clases.DirectorioTelefonico;
 /**
  *
  * @author Hernan
  */
 public class Desktop extends javax.swing.JFrame {
 
+    DirectorioTelefonico directorio = new DirectorioTelefonico();
     /**
      * Creates new form Desktop
      */
@@ -34,7 +36,7 @@ public class Desktop extends javax.swing.JFrame {
         jmiBuscarporapellido = new javax.swing.JMenuItem();
         jmiBuscarporciudad = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jmiEditardirectorio = new javax.swing.JMenuItem();
+        jmiAgregarcontacto = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jmiSalir = new javax.swing.JMenuItem();
 
@@ -64,23 +66,43 @@ public class Desktop extends javax.swing.JFrame {
         jMenu1.add(jmiBuscarportelefono);
 
         jmiBuscarporapellido.setText("Buscar por Apellido");
+        jmiBuscarporapellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiBuscarporapellidoActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmiBuscarporapellido);
 
         jmiBuscarporciudad.setText("Buscar por ciudad");
+        jmiBuscarporciudad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiBuscarporciudadActionPerformed(evt);
+            }
+        });
         jMenu1.add(jmiBuscarporciudad);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Editar");
 
-        jmiEditardirectorio.setText("Agregar y Eliminar Contactos");
-        jMenu2.add(jmiEditardirectorio);
+        jmiAgregarcontacto.setText("Agregar contacto");
+        jmiAgregarcontacto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiAgregarcontactoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmiAgregarcontacto);
 
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Salir");
 
         jmiSalir.setText("Salir");
+        jmiSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiSalirActionPerformed(evt);
+            }
+        });
         jMenu3.add(jmiSalir);
 
         jMenuBar1.add(jMenu3);
@@ -105,11 +127,47 @@ public class Desktop extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        Buscarportelefono buscartelefono= new Buscarportelefono();
+        Buscarportelefono buscartelefono= new Buscarportelefono(directorio);
         buscartelefono.setVisible(true);
         escritorio.add(buscartelefono);
         escritorio.moveToFront(buscartelefono);
     }//GEN-LAST:event_jmiBuscarportelefonoActionPerformed
+
+    private void jmiBuscarporapellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiBuscarporapellidoActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        Buscarporapellido buscarapellido= new Buscarporapellido();
+        buscarapellido.setVisible(true);
+        escritorio.add(buscarapellido);
+        escritorio.moveToFront(buscarapellido);
+    }//GEN-LAST:event_jmiBuscarporapellidoActionPerformed
+
+    private void jmiBuscarporciudadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiBuscarporciudadActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        Buscarporciudad buscarciudad= new Buscarporciudad();
+        buscarciudad.setVisible(true);
+        escritorio.add(buscarciudad);
+        escritorio.moveToFront(buscarciudad);
+    }//GEN-LAST:event_jmiBuscarporciudadActionPerformed
+
+    private void jmiAgregarcontactoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAgregarcontactoActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        Formulariocontacto formulario= new Formulariocontacto(directorio);
+        formulario.setVisible(true);
+        escritorio.add(formulario);
+        escritorio.moveToFront(formulario);
+    }//GEN-LAST:event_jmiAgregarcontactoActionPerformed
+
+    private void jmiSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalirActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        this.dispose();
+    }//GEN-LAST:event_jmiSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,10 +211,10 @@ public class Desktop extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jmiAgregarcontacto;
     private javax.swing.JMenuItem jmiBuscarporapellido;
     private javax.swing.JMenuItem jmiBuscarporciudad;
     private javax.swing.JMenuItem jmiBuscarportelefono;
-    private javax.swing.JMenuItem jmiEditardirectorio;
     private javax.swing.JMenuItem jmiSalir;
     // End of variables declaration//GEN-END:variables
 }

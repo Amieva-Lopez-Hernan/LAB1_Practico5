@@ -4,17 +4,22 @@
  */
 package trabajopractico5.vistas;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Hernan
  */
 public class Buscarporciudad extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo;
     /**
      * Creates new form Buscarporciudad
      */
     public Buscarporciudad() {
         initComponents();
+        modelo=new DefaultTableModel();
+        armarCabecera();
     }
 
     /**
@@ -27,14 +32,14 @@ public class Buscarporciudad extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtDirectorio = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtDirectorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -45,7 +50,7 @@ public class Buscarporciudad extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtDirectorio);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -102,6 +107,15 @@ public class Buscarporciudad extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void armarCabecera(){
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Ciudad");
+        modelo.addColumn("Direccion");
+        jtDirectorio.setModel(modelo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -109,7 +123,7 @@ public class Buscarporciudad extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jtDirectorio;
     // End of variables declaration//GEN-END:variables
 }

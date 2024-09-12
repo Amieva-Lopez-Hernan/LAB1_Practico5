@@ -4,17 +4,22 @@
  */
 package trabajopractico5.vistas;
 
+import clases.Contacto;
+import clases.DirectorioTelefonico;
+
 /**
  *
  * @author Hernan
  */
 public class Buscarportelefono extends javax.swing.JInternalFrame {
 
+    private DirectorioTelefonico directorio;
     /**
      * Creates new form Buscarportelefono
      */
-    public Buscarportelefono() {
+    public Buscarportelefono(DirectorioTelefonico directorio) {
         initComponents();
+        this.directorio=directorio;
     }
 
     /**
@@ -33,12 +38,12 @@ public class Buscarportelefono extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jtfDireccion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jbBorrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jtfTelefono = new javax.swing.JTextField();
         jtfNombre = new javax.swing.JTextField();
@@ -73,7 +78,12 @@ public class Buscarportelefono extends javax.swing.JInternalFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Apellido:");
 
-        jButton1.setText("Borrar");
+        jbBorrar.setText("Borrar");
+        jbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBorrarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -83,19 +93,34 @@ public class Buscarportelefono extends javax.swing.JInternalFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("DNI:");
 
-        jButton4.setText("Salir");
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Ciudad:");
 
-        jButton5.setText("Buscar");
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Direccion:");
 
         jtfTelefono.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jtfTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfTelefonoKeyTyped(evt);
+            }
+        });
 
         jtfNombre.setEditable(false);
         jtfNombre.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -121,7 +146,7 @@ public class Buscarportelefono extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                                .addComponent(jButton5))
+                                .addComponent(jbBuscar))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -133,9 +158,9 @@ public class Buscarportelefono extends javax.swing.JInternalFrame {
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
-                        .addComponent(jButton1)
+                        .addComponent(jbBorrar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4)
+                        .addComponent(jbSalir)
                         .addGap(21, 21, 21))))
         );
         layout.setVerticalGroup(
@@ -147,7 +172,7 @@ public class Buscarportelefono extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton5))
+                    .addComponent(jbBuscar))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,19 +195,48 @@ public class Buscarportelefono extends javax.swing.JInternalFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4))
+                    .addComponent(jbBorrar)
+                    .addComponent(jbSalir))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+        Contacto encontrado = directorio.buscarContacto(Long.parseLong(jtfTelefono.getText()));
+        jtfApellido.setText(encontrado.getApellido());
+        jtfNombre.setText(encontrado.getNombre());
+        jtfDni.setText(encontrado.getDni()+"");
+        jtfCiudad.setText(encontrado.getCiudad());
+        jtfDireccion.setText(encontrado.getDireccion());
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        // TODO add your handling code here:
+        directorio.borrarContacto(Long.parseLong(jtfTelefono.getText()));
+    }//GEN-LAST:event_jbBorrarActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jtfTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTelefonoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key<= 57;
+        if (!numeros){
+            evt.consume();
+        }
+        if (jtfTelefono.getText().trim().length()==10){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfTelefonoKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -190,6 +244,9 @@ public class Buscarportelefono extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JButton jbBorrar;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JTextField jtfApellido;
     private javax.swing.JTextField jtfCiudad;
     private javax.swing.JTextField jtfDireccion;

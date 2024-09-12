@@ -4,17 +4,22 @@
  */
 package trabajopractico5.vistas;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Hernan
  */
 public class Buscarporapellido extends javax.swing.JInternalFrame {
 
+    private DefaultTableModel modelo;
     /**
      * Creates new form Buscarporapellido
      */
     public Buscarporapellido() {
         initComponents();
+        modelo=new DefaultTableModel();
+        armarCabecera();
     }
 
     /**
@@ -31,7 +36,7 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtDirectorio = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(650, 375));
@@ -47,7 +52,7 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
 
         jButton1.setText("Buscar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtDirectorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,7 +63,7 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtDirectorio);
 
         jButton2.setText("Salir");
 
@@ -104,6 +109,15 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void armarCabecera(){
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Ciudad");
+        modelo.addColumn("Direccion");
+        jtDirectorio.setModel(modelo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -111,7 +125,7 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jtDirectorio;
     // End of variables declaration//GEN-END:variables
 }
