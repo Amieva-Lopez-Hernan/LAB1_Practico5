@@ -4,6 +4,12 @@
  */
 package trabajopractico5.vistas;
 
+import clases.Contacto;
+import clases.ContactoTelefono;
+import clases.DirectorioTelefonico;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,10 +19,12 @@ import javax.swing.table.DefaultTableModel;
 public class Buscarporciudad extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo;
+    private DirectorioTelefonico directorio;
     /**
      * Creates new form Buscarporciudad
      */
-    public Buscarporciudad() {
+    public Buscarporciudad(DirectorioTelefonico directorio) {
+        this.directorio = directorio;
         initComponents();
         modelo=new DefaultTableModel();
         armarCabecera();
@@ -35,7 +43,7 @@ public class Buscarporciudad extends javax.swing.JInternalFrame {
         jtDirectorio = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        ciudadTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -62,6 +70,11 @@ public class Buscarporciudad extends javax.swing.JInternalFrame {
         jLabel2.setText("Ciudad:");
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Salir");
 
@@ -77,7 +90,7 @@ public class Buscarporciudad extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ciudadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -95,7 +108,7 @@ public class Buscarporciudad extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ciudadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -106,6 +119,25 @@ public class Buscarporciudad extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        modelo.setRowCount(0);
+        List<ContactoTelefono> contactos = directorio.buscarContactos(ciudadTextField.getText());
+        contactos.forEach(contactoTelefono -> {
+        Object[] fila = {
+            contactoTelefono.getTelefono(),  
+            contactoTelefono.getContacto().getApellido(),  
+            contactoTelefono.getContacto().getNombre(),    
+            contactoTelefono.getContacto().getDni(),       
+            contactoTelefono.getContacto().getCiudad(),    
+            contactoTelefono.getContacto().getDireccion()  
+        };
+        
+        modelo.addRow(fila);
+    });
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void armarCabecera(){
         modelo.addColumn("Telefono");
@@ -118,12 +150,12 @@ public class Buscarporciudad extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ciudadTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable jtDirectorio;
     // End of variables declaration//GEN-END:variables
 }

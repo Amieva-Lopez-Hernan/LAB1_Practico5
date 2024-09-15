@@ -4,6 +4,10 @@
  */
 package trabajopractico5.vistas;
 
+import clases.Contacto;
+import clases.DirectorioTelefonico;
+import java.util.List;
+import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,10 +17,12 @@ import javax.swing.table.DefaultTableModel;
 public class Buscarporapellido extends javax.swing.JInternalFrame {
 
     private DefaultTableModel modelo;
+    private DirectorioTelefonico directorio;
     /**
      * Creates new form Buscarporapellido
      */
-    public Buscarporapellido() {
+    public Buscarporapellido(DirectorioTelefonico directorio) {
+        this.directorio = directorio;
         initComponents();
         modelo=new DefaultTableModel();
         armarCabecera();
@@ -33,7 +39,7 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        apellidoTextField = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtDirectorio = new javax.swing.JTable();
@@ -51,6 +57,11 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
         jLabel2.setText("Apellido:");
 
         jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jtDirectorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,7 +90,7 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(apellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -97,7 +108,7 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(apellidoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -108,6 +119,24 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        modelo.setRowCount(0);
+        Set<Long> telefonos = directorio.buscarTelefono(apellidoTextField.getText());
+        telefonos.forEach(telefono -> {
+        Contacto contacto = directorio.buscarContacto(telefono);
+        Object[] fila = {
+            telefono,  
+            contacto.getApellido(),  
+            contacto.getNombre(),    
+            contacto.getDni(),       
+            contacto.getCiudad(),    
+            contacto.getDireccion()  
+        };
+        
+        modelo.addRow(fila);
+    });
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void armarCabecera(){
         modelo.addColumn("Telefono");
@@ -120,12 +149,12 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField apellidoTextField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable jtDirectorio;
     // End of variables declaration//GEN-END:variables
 }

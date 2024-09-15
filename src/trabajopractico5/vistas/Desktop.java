@@ -137,7 +137,7 @@ public class Desktop extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        Buscarporapellido buscarapellido= new Buscarporapellido();
+        Buscarporapellido buscarapellido= new Buscarporapellido(directorio);
         buscarapellido.setVisible(true);
         escritorio.add(buscarapellido);
         escritorio.moveToFront(buscarapellido);
@@ -147,7 +147,7 @@ public class Desktop extends javax.swing.JFrame {
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        Buscarporciudad buscarciudad= new Buscarporciudad();
+        Buscarporciudad buscarciudad= new Buscarporciudad(directorio);
         buscarciudad.setVisible(true);
         escritorio.add(buscarciudad);
         escritorio.moveToFront(buscarciudad);

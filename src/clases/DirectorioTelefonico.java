@@ -4,6 +4,8 @@
  */
 package clases;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
@@ -42,14 +44,15 @@ public class DirectorioTelefonico {
         return telefonos;
     }
     
-    public Set<Long> buscarContactos (String Ciudad){
-        Set<Long> telefonos = new TreeSet<>();
+    public List<ContactoTelefono> buscarContactos (String Ciudad){
+        List<ContactoTelefono> contactos = new ArrayList<>();
         for (Map.Entry<Long,Contacto> entry:directorio.entrySet()) {
-            if(entry.getValue().getApellido().equalsIgnoreCase(Ciudad)){
-                telefonos.add(entry.getKey());
+            if(entry.getValue().getCiudad().equalsIgnoreCase(Ciudad)){
+                ContactoTelefono contactoTelefono = new ContactoTelefono(entry.getKey(),entry.getValue());
+                contactos.add(contactoTelefono);
             }
         }
-        return telefonos;
+        return contactos;
     }
 }
 
