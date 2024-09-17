@@ -128,6 +128,7 @@ public class Buscarporapellido extends javax.swing.JInternalFrame {
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         modelo.setRowCount(0);
         Set<Long> telefonos = directorio.buscarTelefono(apellidoTextField.getText());
+        
         telefonos.forEach(telefono -> {
         Contacto contacto = directorio.buscarContacto(telefono);
         Object[] fila = {

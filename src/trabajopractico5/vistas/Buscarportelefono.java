@@ -6,6 +6,7 @@ package trabajopractico5.vistas;
 
 import clases.Contacto;
 import clases.DirectorioTelefonico;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -205,12 +206,16 @@ public class Buscarportelefono extends javax.swing.JInternalFrame {
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
         // TODO add your handling code here:
+        try{
         Contacto encontrado = directorio.buscarContacto(Long.parseLong(jtfTelefono.getText()));
         jtfApellido.setText(encontrado.getApellido());
         jtfNombre.setText(encontrado.getNombre());
         jtfDni.setText(encontrado.getDni()+"");
         jtfCiudad.setText(encontrado.getCiudad());
         jtfDireccion.setText(encontrado.getDireccion());
+        }  catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(this, "El numero ingresado no existe en el Directorio!!");
+        }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
