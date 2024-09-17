@@ -4,6 +4,7 @@
  */
 package trabajopractico5.vistas;
 
+import clases.Contacto;
 import clases.DirectorioTelefonico;
 /**
  *
@@ -17,6 +18,7 @@ public class Desktop extends javax.swing.JFrame {
      */
     public Desktop() {
         initComponents();
+        cargarContactos();
     }
 
     /**
@@ -217,4 +219,17 @@ public class Desktop extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiBuscarportelefono;
     private javax.swing.JMenuItem jmiSalir;
     // End of variables declaration//GEN-END:variables
+
+    public void cargarContactos (){
+        directorio.agregarContacto(6548972130L,new Contacto("García", "María", 12345678, "Buenos Aires", "Calle Falsa 123"));
+        directorio.agregarContacto(1234567890L,new Contacto("López", "Juan", 87654321, "Buenos Aires", "Avenida Siempreviva 456"));
+        directorio.agregarContacto(9876543210L,new Contacto("Jofre", "Ana", 54321987, "Mendoza", "Paseo de los Olmos 789"));
+        directorio.agregarContacto(5551234567L,new Contacto("Moreno", "Carlos", 23456789, "Mendoza", "Calle Mitre 101"));
+        directorio.agregarContacto(8901234567L,new Contacto("Moreno", "Laura", 98765432, "Salta", "Avenida Belgrano 202"));
+        directorio.agregarContacto(3216549870L,new Contacto("Amieva", "Diego", 67890123, "Tucumán", "Calle San Martín 303"));
+        directorio.agregarContacto(7894561230L,new Contacto("Martínez", "Sofía", 34567890, "Corrientes", "Avenida Colón 404"));
+        directorio.agregarContacto(4567890123L,new Contacto("López", "Pablo", 01234567, "Cordoba", "Calle Urquiza 505"));
+        directorio.agregarContacto(2345678901L,new Contacto("Sánchez", "Valentina", 78901234, "Cordoba", "Avenida Libertador 606"));
+        directorio.agregarContacto(9012345678L,new Contacto("Moreno", "Lucas", 45678901, "Cordoba", "Calle Rivadavia 707"));
+    }
 }

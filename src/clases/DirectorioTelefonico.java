@@ -44,12 +44,11 @@ public class DirectorioTelefonico {
         return telefonos;
     }
     
-    public List<ContactoTelefono> buscarContactos (String Ciudad){
-        List<ContactoTelefono> contactos = new ArrayList<>();
+    public List<Long> buscarContactos (String Ciudad){
+        List<Long> contactos = new ArrayList<>();
         for (Map.Entry<Long,Contacto> entry:directorio.entrySet()) {
             if(entry.getValue().getCiudad().equalsIgnoreCase(Ciudad)){
-                ContactoTelefono contactoTelefono = new ContactoTelefono(entry.getKey(),entry.getValue());
-                contactos.add(contactoTelefono);
+                contactos.add(entry.getKey());
             }
         }
         return contactos;
