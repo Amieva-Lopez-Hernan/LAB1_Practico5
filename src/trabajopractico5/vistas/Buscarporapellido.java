@@ -6,7 +6,6 @@ package trabajopractico5.vistas;
 
 import clases.Contacto;
 import clases.DirectorioTelefonico;
-import java.util.List;
 import java.util.Set;
 import javax.swing.table.DefaultTableModel;
 

@@ -214,13 +214,29 @@ public class Buscarportelefono extends javax.swing.JInternalFrame {
         jtfCiudad.setText(encontrado.getCiudad());
         jtfDireccion.setText(encontrado.getDireccion());
         }  catch(NullPointerException ex){
-            JOptionPane.showMessageDialog(this, "El numero ingresado no existe en el Directorio!!");
+            JOptionPane.showMessageDialog(this, "El numero ingresado no existe en el Directorio!");
+            jtfTelefono.setText("");
+            jtfTelefono.requestFocus();
+        } catch(NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero de telefono!");
+            jtfTelefono.requestFocus();
         }
     }//GEN-LAST:event_jbBuscarActionPerformed
 
     private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
         // TODO add your handling code here:
+        try{
         directorio.borrarContacto(Long.parseLong(jtfTelefono.getText()));
+        jtfTelefono.setText("");
+        jtfApellido.setText("");
+        jtfNombre.setText("");
+        jtfDni.setText("");
+        jtfCiudad.setText("");
+        jtfDireccion.setText("");
+        } catch (NumberFormatException ex){
+            JOptionPane.showMessageDialog(this, "Debe ingresar un numero de telefono!");
+            jtfTelefono.requestFocus();
+        }
     }//GEN-LAST:event_jbBorrarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed

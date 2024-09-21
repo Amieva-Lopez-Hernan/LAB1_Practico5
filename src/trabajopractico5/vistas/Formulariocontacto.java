@@ -6,6 +6,7 @@ package trabajopractico5.vistas;
 
 import clases.Contacto;
 import clases.DirectorioTelefonico;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,12 +15,13 @@ import clases.DirectorioTelefonico;
 public class Formulariocontacto extends javax.swing.JInternalFrame {
 
     private DirectorioTelefonico directorio;
+
     /**
      * Creates new form FormularioContacto
      */
     public Formulariocontacto(DirectorioTelefonico directorio) {
         initComponents();
-        this.directorio=directorio;
+        this.directorio = directorio;
     }
 
     /**
@@ -222,11 +224,11 @@ public class Formulariocontacto extends javax.swing.JInternalFrame {
     private void jtfTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfTelefonoKeyTyped
         // TODO add your handling code here:
         int key = evt.getKeyChar();
-        boolean numeros = key >= 48 && key<= 57;
-        if (!numeros){
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
             evt.consume();
         }
-        if (jtfTelefono.getText().trim().length()==10){
+        if (jtfTelefono.getText().trim().length() == 10) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfTelefonoKeyTyped
@@ -234,14 +236,14 @@ public class Formulariocontacto extends javax.swing.JInternalFrame {
     private void jtfApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfApellidoKeyTyped
         // TODO add your handling code here:
         int key = evt.getKeyChar();
-        boolean mayusculas = key >=65 && key <=90;
-        boolean minusculas = key >=97 && key <=122;
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
         boolean espacio = key == 32;
-        
-        if (!mayusculas && !minusculas && !espacio){
+
+        if (!mayusculas && !minusculas && !espacio) {
             evt.consume();
         }
-        if (jtfApellido.getText().trim().length()==25){
+        if (jtfApellido.getText().trim().length() == 25) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfApellidoKeyTyped
@@ -249,14 +251,14 @@ public class Formulariocontacto extends javax.swing.JInternalFrame {
     private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
         // TODO add your handling code here:
         int key = evt.getKeyChar();
-        boolean mayusculas = key >=65 && key <=90;
-        boolean minusculas = key >=97 && key <=122;
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
         boolean espacio = key == 32;
-        
-        if (!mayusculas && !minusculas && !espacio){
+
+        if (!mayusculas && !minusculas && !espacio) {
             evt.consume();
         }
-        if (jtfNombre.getText().trim().length()==25){
+        if (jtfNombre.getText().trim().length() == 25) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfNombreKeyTyped
@@ -264,11 +266,11 @@ public class Formulariocontacto extends javax.swing.JInternalFrame {
     private void jtfDniKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDniKeyTyped
         // TODO add your handling code here:
         int key = evt.getKeyChar();
-        boolean numeros = key >= 48 && key<= 57;
-        if (!numeros){
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
             evt.consume();
         }
-        if (jtfDni.getText().trim().length()==8){
+        if (jtfDni.getText().trim().length() == 8) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfDniKeyTyped
@@ -276,14 +278,14 @@ public class Formulariocontacto extends javax.swing.JInternalFrame {
     private void jtfCiudadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfCiudadKeyTyped
         // TODO add your handling code here:
         int key = evt.getKeyChar();
-        boolean mayusculas = key >=65 && key <=90;
-        boolean minusculas = key >=97 && key <=122;
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
         boolean espacio = key == 32;
-        
-        if (!mayusculas && !minusculas && !espacio){
+
+        if (!mayusculas && !minusculas && !espacio) {
             evt.consume();
         }
-        if (jtfCiudad.getText().trim().length()==25){
+        if (jtfCiudad.getText().trim().length() == 25) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfCiudadKeyTyped
@@ -291,32 +293,41 @@ public class Formulariocontacto extends javax.swing.JInternalFrame {
     private void jtfDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDireccionKeyTyped
         // TODO add your handling code here:
         int key = evt.getKeyChar();
-        boolean numeros = key >= 48 && key<= 57;
-        boolean mayusculas = key >=65 && key <=90;
-        boolean minusculas = key >=97 && key <=122;
+        boolean numeros = key >= 48 && key <= 57;
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
         boolean espacio = key == 32;
-        
-        if (!mayusculas && !minusculas && !espacio && !numeros){
+
+        if (!mayusculas && !minusculas && !espacio && !numeros) {
             evt.consume();
         }
-        if (jtfDireccion.getText().trim().length()==50){
+        if (jtfDireccion.getText().trim().length() == 50) {
             evt.consume();
         }
     }//GEN-LAST:event_jtfDireccionKeyTyped
 
     private void jbNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevoActionPerformed
         // TODO add your handling code here:
+        limpiarCampos();
         activarCampos();
         jbGuardar.setEnabled(true);
     }//GEN-LAST:event_jbNuevoActionPerformed
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
-        Contacto c = new Contacto (jtfApellido.getText(),jtfNombre.getText(),Integer.parseInt(jtfDni.getText()),jtfCiudad.getText(),jtfDireccion.getText());
-        directorio.agregarContacto(Long.parseLong(jtfTelefono.getText()), c);
-        limpiarCampos();
-        desactivarCampos();
-        jbGuardar.setEnabled(false);
+        try {
+            if (jtfApellido.getText().length()!=0 && jtfNombre.getText().length()!=0 && jtfCiudad.getText().length()!=0 && jtfDireccion.getText().length()!=0) {
+                Contacto c = new Contacto(jtfApellido.getText(), jtfNombre.getText(), Integer.parseInt(jtfDni.getText()), jtfCiudad.getText(), jtfDireccion.getText());
+                directorio.agregarContacto(Long.parseLong(jtfTelefono.getText()), c);
+                limpiarCampos();
+                desactivarCampos();
+                jbGuardar.setEnabled(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Le falta ingresar uno o mas datos!");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Le falta ingresar uno o mas datos!");
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
@@ -324,7 +335,7 @@ public class Formulariocontacto extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
-    private void activarCampos(){
+    private void activarCampos() {
         jtfTelefono.setEnabled(true);
         jtfApellido.setEnabled(true);
         jtfNombre.setEnabled(true);
@@ -333,7 +344,7 @@ public class Formulariocontacto extends javax.swing.JInternalFrame {
         jtfDireccion.setEnabled(true);
     }
 
-    private void desactivarCampos(){
+    private void desactivarCampos() {
         jtfTelefono.setEnabled(false);
         jtfApellido.setEnabled(false);
         jtfNombre.setEnabled(false);
@@ -341,8 +352,8 @@ public class Formulariocontacto extends javax.swing.JInternalFrame {
         jtfCiudad.setEnabled(false);
         jtfDireccion.setEnabled(false);
     }
-    
-    private void limpiarCampos(){
+
+    private void limpiarCampos() {
         jtfTelefono.setText("");
         jtfApellido.setText("");
         jtfNombre.setText("");

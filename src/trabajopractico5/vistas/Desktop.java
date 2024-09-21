@@ -228,7 +228,7 @@ public class Desktop extends javax.swing.JFrame {
         directorio.agregarContacto(8901234567L,new Contacto("Moreno", "Laura", 98765432, "Salta", "Avenida Belgrano 202"));
         directorio.agregarContacto(3216549870L,new Contacto("Amieva", "Diego", 67890123, "Tucumán", "Calle San Martín 303"));
         directorio.agregarContacto(7894561230L,new Contacto("Martínez", "Sofía", 34567890, "Corrientes", "Avenida Colón 404"));
-        directorio.agregarContacto(4567890123L,new Contacto("López", "Pablo", 01234567, "Cordoba", "Calle Urquiza 505"));
+        directorio.agregarContacto(4567890123L,new Contacto("López", "Pablo", 11234567, "Cordoba", "Calle Urquiza 505"));
         directorio.agregarContacto(2345678901L,new Contacto("Sánchez", "Valentina", 78901234, "Cordoba", "Avenida Libertador 606"));
         directorio.agregarContacto(9012345678L,new Contacto("Moreno", "Lucas", 45678901, "Cordoba", "Calle Rivadavia 707"));
     }
